@@ -6,10 +6,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.5, 30 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Root" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="Icon" type="Sprite" parent="."]
+[node name="Graphics" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
