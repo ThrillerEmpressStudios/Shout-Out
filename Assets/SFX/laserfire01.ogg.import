@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/laserfire01.ogg-17f16971e9e415ee90dcfab2f4c52759.oggstr"
+
+[deps]
+
+source_file="res://Assets/SFX/laserfire01.ogg"
+dest_files=[ "res://.import/laserfire01.ogg-17f16971e9e415ee90dcfab2f4c52759.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
