@@ -10,8 +10,8 @@ config_version=4
 
 [application]
 
-config/name="Shout-Out-Bullet-Hell-Jam"
-run/main_scene="res://Scenes/Game.tscn"
+config/name="Shout-Out"
+run/main_scene="res://Scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [gui]

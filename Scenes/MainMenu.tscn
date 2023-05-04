@@ -1,0 +1,98 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Assets/Font/PIXEL-LI.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Font/Pixel-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/MainMenu.cs" type="Script" id=3]
+[ext_resource path="res://Assets/UI/button.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/selected_button.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 100
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -110.0
+margin_top = -52.0
+margin_right = 110.0
+margin_bottom = 52.0
+
+[node name="StartGameButton" type="Button" parent="VBoxContainer"]
+margin_right = 220.0
+margin_bottom = 40.0
+focus_next = NodePath("../QuitGame")
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 4 )
+text = "Start Game"
+
+[node name="QuitGame" type="Button" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 220.0
+margin_bottom = 84.0
+focus_next = NodePath("../StartGameButton")
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 5 )
+text = "Quit Game"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -308.0
+margin_top = 70.0
+margin_right = 308.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+margin_right = 670.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 3 )
+text = "SHOUT OUT"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_StartGameButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitGame" to="." method="_on_QuitGame_pressed"]
