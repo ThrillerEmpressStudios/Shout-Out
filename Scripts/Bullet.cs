@@ -25,11 +25,9 @@ public class Bullet : Node2D
             QueueFree();
     }
 
-    private void OnAreaEntered(Area2D area)
+    private void OnAreaEntered(Node with)
     {
-        if (area.GetParent() is Player)
-            return;
-
+        with.GetParent<Alien>().Damage(10);
         QueueFree();
     }
 }

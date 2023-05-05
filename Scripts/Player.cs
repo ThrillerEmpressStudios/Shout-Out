@@ -5,6 +5,23 @@ public class Player : KinematicBody2D
 {
     PackedScene bulletScene;
 
+    private float health = 100;
+    public float Health
+    {
+        get
+        {
+            return health;
+        }
+        set
+        {
+            health = value;
+            if (health <= 0)
+            {
+                QueueFree();
+            }
+        }
+    }
+
     [Export]
     public float speed = 200;
 

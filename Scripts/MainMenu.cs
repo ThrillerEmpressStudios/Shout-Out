@@ -12,9 +12,6 @@ public class MainMenu : Control
         creditsScene = GD.Load<PackedScene>("res://Scenes/Credits.tscn");
 
         clickSound = GD.Load<AudioStream>("res://Assets/SFX/click_2.wav");
-
-        //OS.WindowResizable = false;
-        OS.SetWindowTitle("");
     }
 
     public async void _on_StartGameButton_pressed()
