@@ -3,34 +3,10 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Alien.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player UI.tscn" type="PackedScene" id=3]
-
-[sub_resource type="CSharpScript" id=1]
-resource_name = "Game"
-script/source = "using Godot;
-using System;
-
-public class Game : Node2D
-{
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = \"text\";
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-        
-    }
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
-}
-"
+[ext_resource path="res://Scripts/Game.cs" type="Script" id=4]
 
 [node name="Game" type="Node2D"]
-script = SubResource( 1 )
+script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -48,3 +24,7 @@ editor_draw_drag_margin = true
 [node name="Alien1" parent="." instance=ExtResource( 2 )]
 
 [node name="Player UI" parent="." instance=ExtResource( 3 )]
+
+[node name="GameTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]

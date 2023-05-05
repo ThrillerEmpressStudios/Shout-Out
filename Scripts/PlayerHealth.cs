@@ -15,5 +15,10 @@ public class PlayerHealth : Label
         {
             Text = "Player does not exist";
         }
+
+        if (player.Health <= 10)
+        {
+            Modulate = new Color(1, 0, 0);
+        }
     }
 }

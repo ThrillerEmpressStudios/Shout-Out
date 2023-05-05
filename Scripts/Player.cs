@@ -5,6 +5,7 @@ public class Player : KinematicBody2D
 {
     PackedScene bulletScene;
 
+    public int ammo;
     private float health = 100;
     public float Health
     {
@@ -29,6 +30,8 @@ public class Player : KinematicBody2D
 
     public override void _Ready()
     {
+        ammo = 40;
+
         bulletScene = GD.Load<PackedScene>("res://Scenes/Bullet.tscn");
 
         Position = new Vector2(512, 300);
@@ -68,25 +71,32 @@ public class Player : KinematicBody2D
         {
             if (Input.IsActionJustPressed("shoot"))
             {
-                Bullet bullet = (Bullet)bulletScene.Instance();
-                bullet.Position = Position;
-                bullet.Rotation = Rotation;
-
-                GetParent().AddChild(bullet);
-                GetTree().SetInputAsHandled();
+                Shoot();
             }
         }
         else if (@event is InputEventJoypadButton joystickEvent)
         {
             if (Input.IsActionJustPressed("shoot_control"))
             {
-                Bullet bullet = (Bullet)bulletScene.Instance();
-                bullet.Position = Position;
-                bullet.Rotation = Rotation;
-
-                GetParent().AddChild(bullet);
-                GetTree().SetInputAsHandled();
+                Shoot();
             }
+        }
+    }
+
+    private void Shoot()
+    {
+        AudioStreamPlayer shootSound = GetNode<AudioStreamPlayer>("ShootSound");
+        if (ammo > 0)
+        {
+            shootSound.Play();
+            Bullet bullet = (Bullet)bulletScene.Instance();
+            bullet.Position = Position;
+            bullet.Rotation = Rotation;
+
+            GetParent().AddChild(bullet);
+            GetTree().SetInputAsHandled();
+
+            ammo -= 1;
         }
     }
 

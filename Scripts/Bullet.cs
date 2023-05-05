@@ -4,8 +4,9 @@ using System;
 public class Bullet : Node2D
 {
     public float range = 1024;
-
     private float distanceTravelled = 0;
+
+    private AudioStreamPlayer shootSound;
 
     public override void _Ready()
     {
