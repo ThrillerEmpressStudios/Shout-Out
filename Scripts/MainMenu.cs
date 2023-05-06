@@ -16,6 +16,8 @@ public class MainMenu : Control
 
     public async void _on_StartGameButton_pressed()
     {
+        Game.gameTime = 100;
+        
         ClickButtonSound();
         await Task.Delay(TimeSpan.FromSeconds(0.5));
         GetTree().ChangeScene("res://Scenes/Game.tscn");

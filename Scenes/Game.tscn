@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Alien.tscn" type="PackedScene" id=2]
@@ -6,9 +6,13 @@
 [ext_resource path="res://Scripts/Game.cs" type="Script" id=4]
 [ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/GameOverScreen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/TimePowerUp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Mall.tscn" type="PackedScene" id=8]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 4 )
+
+[node name="Mall" parent="." instance=ExtResource( 8 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -34,5 +38,7 @@ visible = false
 
 [node name="GameOverScreen" parent="." instance=ExtResource( 6 )]
 visible = false
+
+[node name="TimePowerUp" parent="." instance=ExtResource( 7 )]
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
