@@ -18,12 +18,14 @@ script = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
-limit_left = -1000
-limit_top = -1000
-limit_right = 1000
-limit_bottom = 1000
+limit_left = -1470
+limit_top = -1320
+limit_right = 1390
+limit_bottom = 1230
+limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
+smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 

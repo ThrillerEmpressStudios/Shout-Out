@@ -3,8 +3,8 @@
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Alien.cs" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.5, 31 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 92.635
 
 [node name="Alien" type="Node2D"]
 script = ExtResource( 2 )

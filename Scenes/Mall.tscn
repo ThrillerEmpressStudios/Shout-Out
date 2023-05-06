@@ -5,5 +5,6 @@
 [node name="Mall" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 5, 5 )
+position = Vector2( -36.0001, -47.9999 )
+scale = Vector2( 3.73958, 3.33333 )
 texture = ExtResource( 1 )

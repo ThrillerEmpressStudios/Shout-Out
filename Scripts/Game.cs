@@ -71,4 +71,10 @@ public class Game : Node2D
     {
         gameTime -= 1;
     }
+
+    public void RestartGame()
+    {
+        GetTree().ReloadCurrentScene();
+        gameTime = 100;
+    }
 }

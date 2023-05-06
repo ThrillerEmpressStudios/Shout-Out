@@ -32,7 +32,7 @@ public class Player : KinematicBody2D
 
         bulletScene = GD.Load<PackedScene>("res://Scenes/Bullet.tscn");
 
-        Position = new Vector2(512, 300);
+        Position = new Vector2(52, 900);
     }
 
     public override void _PhysicsProcess(float delta)

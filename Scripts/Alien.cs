@@ -6,7 +6,11 @@ public class Alien : Node2D
     private Timer timer;
     private Player player;
 
-    private float health = 30;
+    private float health;
+    private float chaseRange;
+    private bool chasingPlayer;
+
+    private float speed, moveAmount;
 
     public void Damage(float amount)
     {
@@ -17,43 +21,43 @@ public class Alien : Node2D
 
     public override void _Ready()
     {
-        player = GetNode<Player>("../Player");
+        player = GetNode<Player>("/root/Game/Player");
+        chasingPlayer = false;
+
+        CollisionShape2D collisionRange = GetNode<CollisionShape2D>("Area2D/CollisionShape2D");
+        var circleShape = (CircleShape2D)collisionRange.Shape;
+        circleShape.Radius = 100;
 
         var area = GetNode<Area2D>("Area2D");
         area.Connect("area_entered", this, nameof(OnCollision));
-        area.Connect("area_exited", this, nameof(OnCollisionNoMore));
-
-        timer = GetNode<Timer>("Timer");
-        timer.Connect("timeout", this, nameof(OnTimerTimeout));
+        area.Connect("area_exited", this, nameof(ChasePlayer));
     }
 
     public override void _Process(float delta)
     {
-        float speed = 80;
-        float moveAmount = speed * delta;
-        Vector2 moveDirection = (player.Position - Position).Normalized();
-        Position += moveDirection * moveAmount;
+        speed = 80;
+        moveAmount = speed * delta;
+
+        if (chasingPlayer)
+        {
+            ChasePlayer(true);
+        }
     }
 
     private void OnCollision(Area2D with)
     {
         if (with.GetParent() is Player player)
         {
-            timer.Start(1);
+            chasingPlayer = true;
         }
     }
 
-    private void OnCollisionNoMore(Area2D with)
+    private void ChasePlayer(bool chase)
     {
-        if (with.GetParent() is Player player)
+        if (chase)
         {
-            timer.Stop();
+            Vector2 moveDirection = (player.Position - Position).Normalized();
+            Position += moveDirection * moveAmount;
         }
-    }
-
-    private void OnTimerTimeout()
-    {
-        if (player != null)
-            player.Health -= 20;
     }
 }
