@@ -4,6 +4,8 @@ using System;
 public class Player : KinematicBody2D
 {
     PackedScene bulletScene;
+    CanvasLayer gameOverScreen, pauseMenuScene;
+    Node2D gameRoot;
 
     public int ammo;
     private float health = 100;
@@ -16,10 +18,6 @@ public class Player : KinematicBody2D
         set
         {
             health = value;
-            if (health <= 0)
-            {
-                QueueFree();
-            }
         }
     }
 
@@ -99,5 +97,4 @@ public class Player : KinematicBody2D
             ammo -= 1;
         }
     }
-
 }

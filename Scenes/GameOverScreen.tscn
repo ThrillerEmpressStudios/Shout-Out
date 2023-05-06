@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Font/PIXEL-LI.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/UI/selected_button.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/button.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/GameOverScreen.cs" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[node name="GameOverScreen" type="CanvasLayer"]
+layer = 100
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.368627 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -205.5
+margin_top = -20.0
+margin_right = 205.5
+margin_bottom = 20.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 411.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "You weren't fast enough..."
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = 20.0
+margin_right = 89.0
+margin_bottom = 85.0
+
+[node name="TryAgain" type="Button" parent="VBoxContainer2"]
+pause_mode = 2
+margin_right = 214.0
+margin_bottom = 40.0
+focus_next = NodePath("../CreditsButton")
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+text = "TRY AGAIN"
+
+[connection signal="pressed" from="VBoxContainer2/TryAgain" to="." method="_on_TryAgain_pressed"]

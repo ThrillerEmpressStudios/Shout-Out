@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/PauseMenu.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Font/PIXEL-LI.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/UI/selected_button.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/button.png" type="Texture" id=4]
+[ext_resource path="res://Assets/SFX/click_2.wav" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 64, 32 )
+
+[node name="PauseMenu" type="CanvasLayer"]
+pause_mode = 2
+layer = 100
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 984.0
+margin_bottom = 558.0
+color = Color( 0, 0, 0, 0.364706 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 388.0
+margin_top = 250.0
+margin_right = 614.0
+margin_bottom = 355.0
+focus_mode = 2
+
+[node name="ResumeGame" type="Button" parent="Control/VBoxContainer"]
+margin_right = 226.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "Resume Game"
+
+[node name="QuitGame2" type="Button" parent="Control/VBoxContainer"]
+margin_top = 44.0
+margin_right = 226.0
+margin_bottom = 84.0
+focus_next = NodePath("../ResumeGame")
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+text = "Quit Game"
+
+[node name="ClickButton" type="AudioStreamPlayer" parent="Control"]
+stream = ExtResource( 5 )
+
+[connection signal="pressed" from="Control/VBoxContainer/ResumeGame" to="." method="_on_ResumeGame_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/QuitGame2" to="." method="_on_QuitGame2_pressed"]

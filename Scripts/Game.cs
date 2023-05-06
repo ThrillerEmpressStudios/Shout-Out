@@ -6,6 +6,7 @@ public class Game : Node2D
     Player player;
     Timer gameTimer;
     Label gameTimeText, playerAmmoText;
+    CanvasLayer gameOverScreen, pauseMenuScreen;
     private int gameTime = 100;
 
     public override void _Ready()
@@ -21,8 +22,22 @@ public class Game : Node2D
 
     public override void _Process(float delta)
     {
-        gameTimeText.Text = $"Time: {gameTime}";
-        playerAmmoText.Text = $"Ammo: {player.ammo}";
+        if (player != null)
+        {
+            gameTimeText.Text = $"Time: {gameTime}";
+            playerAmmoText.Text = $"Ammo: {player.ammo}";
+        }
+
+        if (player.Health <= -1)
+        {
+            gameOverScreen = GetNode<CanvasLayer>("/root/Game/GameOverScreen");
+            gameOverScreen.Visible = true;
+
+            pauseMenuScreen = GetNode<CanvasLayer>("/root/Game/PauseMenu");
+            pauseMenuScreen.QueueFree();
+
+            GetTree().Paused = true;
+        }
 
         if (gameTime <= 0)
         {
@@ -32,7 +47,7 @@ public class Game : Node2D
         if (gameTime <= 30 && gameTime > 9)
         {
             gameTimeText.Modulate = new Color(255, 255, 0);
-            
+
             if (gameTime <= 10)
             {
                 gameTimeText.Modulate = new Color(1, 0, 0);
