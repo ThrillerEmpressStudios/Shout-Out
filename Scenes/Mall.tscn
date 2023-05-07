@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Assets/Shopping.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/Shopping.png" type="Texture" id=1]
 
 [node name="Mall" type="Node2D"]
 

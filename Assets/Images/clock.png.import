@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Shopping.png-8a4790093456b9a51335440f613a18ef.stex"
+path="res://.import/clock.png-e7665a1fa3c9f98b2ceefa820cc2fbf6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Shopping.png"
-dest_files=[ "res://.import/Shopping.png-8a4790093456b9a51335440f613a18ef.stex" ]
+source_file="res://Assets/Images/clock.png"
+dest_files=[ "res://.import/clock.png-e7665a1fa3c9f98b2ceefa820cc2fbf6.stex" ]
 
 [params]
 

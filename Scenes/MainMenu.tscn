@@ -5,7 +5,7 @@
 [ext_resource path="res://Scripts/MainMenu.cs" type="Script" id=3]
 [ext_resource path="res://Assets/UI/button.png" type="Texture" id=4]
 [ext_resource path="res://Assets/UI/selected_button.png" type="Texture" id=5]
-[ext_resource path="res://Assets/background.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Images/background.png" type="Texture" id=6]
 [ext_resource path="res://Assets/SFX/click_2.wav" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
@@ -51,8 +51,8 @@ focus_mode = 2
 script = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1022.0
-margin_bottom = 601.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 6 )
 expand = true
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/clock.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/clock.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/TimePowerUp.cs" type="Script" id=2]
 [ext_resource path="res://Assets/SFX/clock-1.ogg" type="AudioStream" id=3]
 

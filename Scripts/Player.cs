@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Player : KinematicBody2D
+public class Player : Node2D
 {
     PackedScene bulletScene;
     CanvasLayer gameOverScreen, pauseMenuScene;

@@ -1,6 +1,7 @@
 [gd_scene format=2]
 
 [node name="Credits" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 230.0
@@ -9,8 +10,8 @@ margin_right = -214.0
 margin_bottom = -64.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 580.0
-margin_bottom = 486.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 0.184314, 0.345098, 0.654902, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -29,17 +30,21 @@ text = "Credits"
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -282.0
-margin_top = 21.0
-margin_right = 287.0
-margin_bottom = 237.0
+margin_left = -290.0
+margin_top = 24.0
+margin_right = 290.0
+margin_bottom = 253.0
 
 [node name="Label2" type="Label" parent="VBoxContainer2"]
-margin_right = 569.0
-margin_bottom = 48.0
-text = "Background menu: fridaruiz
+margin_right = 580.0
+margin_bottom = 201.0
+text = "Directors: TheLuke and ScrapTrapMaker
+
+Producer: TheLuke
 
 Contributors: Johnatan
+
+Background menu: fridaruiz
 
 Clock Power up: MSavioti
 Shoot sound: K.L.Jonasson, Winnipeg, Canada. Triki Minut Interactive www.trikiminut.com
@@ -47,3 +52,4 @@ Shoot sound: K.L.Jonasson, Winnipeg, Canada. Triki Minut Interactive www.trikimi
 Others: https://opengameart.org/"
 align = 1
 valign = 1
+autowrap = true

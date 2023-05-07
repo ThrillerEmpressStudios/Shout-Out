@@ -3,6 +3,7 @@ using System;
 
 public class Alien : Node2D
 {
+    private PackedScene bulletScene;
     private Timer timer;
     private Player player;
 
@@ -26,11 +27,11 @@ public class Alien : Node2D
 
         CollisionShape2D collisionRange = GetNode<CollisionShape2D>("Area2D/CollisionShape2D");
         var circleShape = (CircleShape2D)collisionRange.Shape;
-        circleShape.Radius = 100;
+        circleShape.Radius = 200;
 
         var area = GetNode<Area2D>("Area2D");
         area.Connect("area_entered", this, nameof(OnCollision));
-        area.Connect("area_exited", this, nameof(ChasePlayer));
+        area.Connect("area_exited", this, nameof(NotLookingPlayer));
     }
 
     public override void _Process(float delta)
@@ -40,7 +41,7 @@ public class Alien : Node2D
 
         if (chasingPlayer)
         {
-            ChasePlayer(true);
+            LookAtPlayer(true);
         }
     }
 
@@ -52,12 +53,25 @@ public class Alien : Node2D
         }
     }
 
-    private void ChasePlayer(bool chase)
+    private void NotLookingPlayer(Area2D with)
+    {
+        if (with.GetParent() is Player player)
+        {
+            chasingPlayer = false;
+        }
+    }
+
+    private void LookAtPlayer(bool chase)
     {
         if (chase)
         {
-            Vector2 moveDirection = (player.Position - Position).Normalized();
-            Position += moveDirection * moveAmount;
+            var playerPosition = player.Position;
+            LookAt(playerPosition);
+            ShootingPlayer();
         }
+    }
+
+    private void ShootingPlayer()
+    {
     }
 }
