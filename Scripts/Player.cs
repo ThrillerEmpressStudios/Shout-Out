@@ -30,7 +30,7 @@ public class Player : Node2D
     {
         ammo = 40;
 
-        bulletScene = GD.Load<PackedScene>("res://Scenes/Bullet.tscn");
+        bulletScene = GD.Load<PackedScene>("res://Scenes/PlayerBullet.tscn");
 
         Position = new Vector2(52, 900);
     }

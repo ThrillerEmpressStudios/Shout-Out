@@ -7,6 +7,7 @@ public class Game : Node2D
     Timer gameTimer;
     Label gameTimeText, playerAmmoText;
     CanvasLayer gameOverScreen, pauseMenuScreen;
+    PackedScene alienScene;
     public static int gameTime = 100;
 
     public override void _Ready()
@@ -18,6 +19,13 @@ public class Game : Node2D
         playerAmmoText = GetNode<Label>("/root/Game/Player UI/VBoxContainer3/PlayerAmmunition");
 
         gameTimer.Start();
+
+        alienScene = GD.Load<PackedScene>("res://Scenes/Alien.tscn");
+        Alien alien = (Alien)alienScene.Instance();
+        alien.Position = Position;
+        alien.chaseRange = 400;
+        alien.SetAlienType(2);
+        AddChild(alien);
     }
 
     public override void _Process(float delta)

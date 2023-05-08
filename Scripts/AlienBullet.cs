@@ -1,13 +1,13 @@
 using Godot;
 using System;
 
-public class Bullet : Node2D
+public class AlienBullet : Node2D
 {
     private float range = 1024;
     private float distanceTravelled = 0;
 
     private AudioStreamPlayer shootSound;
-
+    
     public override void _Ready()
     {
         var area = GetNode<Area2D>("Area2D");
@@ -28,8 +28,7 @@ public class Bullet : Node2D
 
     private void OnAreaEntered(Node with)
     {
-        with.GetParent<Alien>().Damage(10);
+        with.GetParent<Player>().Health -= 5;
         QueueFree();
     }
 }
-
