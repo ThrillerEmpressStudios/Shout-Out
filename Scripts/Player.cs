@@ -28,7 +28,7 @@ public class Player : Node2D
 
     public override void _Ready()
     {
-        ammo = 40;
+        ammo = 150;
 
         bulletScene = GD.Load<PackedScene>("res://Scenes/PlayerBullet.tscn");
 

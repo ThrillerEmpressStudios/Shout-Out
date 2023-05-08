@@ -23,6 +23,7 @@ public class Alien : Node2D
                 area.Connect("area_exited", this, nameof(NotLookingPlayer));
 
                 this.alienType = 1;
+                this.health = 30;
                 break;
             case 2:
                 area = GetNode<Area2D>("Area2D");
@@ -30,6 +31,7 @@ public class Alien : Node2D
                 area.Connect("area_exited", this, nameof(NotLookingPlayer));
 
                 this.alienType = 2;
+                this.health = 150;
                 break;
             case 3:
                 area = GetNode<Area2D>("Area2D");
@@ -37,6 +39,7 @@ public class Alien : Node2D
                 area.Connect("area_exited", this, nameof(NotLookingPlayer));
 
                 this.alienType = 3;
+                this.health = 50;
                 break;
             default:
                 GD.Print("It is not a valid type");
@@ -57,7 +60,7 @@ public class Alien : Node2D
 
         CollisionShape2D collisionRange = GetNode<CollisionShape2D>("Area2D/CollisionShape2D");
         var circleShape = (CircleShape2D)collisionRange.Shape;
-        circleShape.Radius = 200;
+        circleShape.Radius = chaseRange;
     }
 
     public override void _Process(float delta)

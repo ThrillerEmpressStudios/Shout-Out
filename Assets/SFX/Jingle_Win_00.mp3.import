@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Jingle_Win_00.mp3-cb2f32827d1f074242cf7d3471a321b5.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Jingle_Win_00.mp3"
+dest_files=[ "res://.import/Jingle_Win_00.mp3-cb2f32827d1f074242cf7d3471a321b5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

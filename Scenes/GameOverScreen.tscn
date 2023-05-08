@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Font/PIXEL-LI.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/UI/selected_button.png" type="Texture" id=2]
 [ext_resource path="res://Assets/UI/button.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/GameOverScreen.cs" type="Script" id=4]
+[ext_resource path="res://Assets/SFX/Jingle_Lose_01.mp3" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -73,5 +74,8 @@ custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 text = "TRY AGAIN"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="pressed" from="VBoxContainer2/TryAgain" to="." method="_on_TryAgain_pressed"]

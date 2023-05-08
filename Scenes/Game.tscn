@@ -1,12 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/OST/DST-RailJet-LongSeamlessLoop.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Scenes/Player UI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Game.cs" type="Script" id=4]
 [ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/GameOverScreen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/WinArea.cs" type="Script" id=7]
 [ext_resource path="res://Scenes/Mall.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/SFX/gunreload1.wav" type="AudioStream" id=9]
+[ext_resource path="res://Scenes/VictoryScreen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/AmmoPowerUp.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/TimePowerUp.tscn" type="PackedScene" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 96.25, 370.5 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 4 )
@@ -41,4 +49,32 @@ visible = false
 [node name="GameOverScreen" parent="." instance=ExtResource( 6 )]
 visible = false
 
+[node name="GameOST" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="SpawnAliensTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="WinArea" type="Area2D" parent="."]
+collision_mask = 0
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
+position = Vector2( 943.25, -940.5 )
+shape = SubResource( 1 )
+
+[node name="VictoryScreen" parent="." instance=ExtResource( 10 )]
+visible = false
+
+[node name="AmmoPowerUp" parent="." instance=ExtResource( 11 )]
+position = Vector2( -1307, 354 )
+
+[node name="AmmoPowerUp2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1277, 294 )
+
+[node name="TimePowerUp" parent="." instance=ExtResource( 12 )]
+position = Vector2( -1423, -85 )
+
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
+[connection signal="timeout" from="SpawnAliensTimer" to="." method="_on_Timer_timeout"]

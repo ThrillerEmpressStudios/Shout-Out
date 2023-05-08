@@ -7,25 +7,23 @@ public class Game : Node2D
     Timer gameTimer;
     Label gameTimeText, playerAmmoText;
     CanvasLayer gameOverScreen, pauseMenuScreen;
-    PackedScene alienScene;
+    PackedScene alienScene, timePowerUp, ammoPowerUp;
+    Random random;
+
     public static int gameTime = 100;
 
     public override void _Ready()
     {
+        random = new Random();
         player = GetNode<Player>("/root/Game/Player");
 
         gameTimer = GetNode<Timer>("/root/Game/GameTimer");
         gameTimeText = GetNode<Label>("/root/Game/Player UI/VBoxContainer2/GameTime");
         playerAmmoText = GetNode<Label>("/root/Game/Player UI/VBoxContainer3/PlayerAmmunition");
 
-        gameTimer.Start();
 
-        alienScene = GD.Load<PackedScene>("res://Scenes/Alien.tscn");
-        Alien alien = (Alien)alienScene.Instance();
-        alien.Position = Position;
-        alien.chaseRange = 400;
-        alien.SetAlienType(2);
-        AddChild(alien);
+
+        gameTimer.Start();
     }
 
     public override void _Process(float delta)
@@ -84,5 +82,18 @@ public class Game : Node2D
     {
         GetTree().ReloadCurrentScene();
         gameTime = 100;
+    }
+
+    //Alien Spawn
+    public void _on_Timer_timeout()
+    {
+        var alienType = random.Next(1, 3);
+
+        alienScene = GD.Load<PackedScene>("res://Scenes/Alien.tscn");
+        Alien alien = (Alien)alienScene.Instance();
+        alien.Position = new Vector2(random.Next(-2000, 2000), random.Next(-600, 600));
+        alien.chaseRange = 400;
+        alien.SetAlienType(alienType);
+        AddChild(alien);
     }
 }
