@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/OST/DST-RailJet-LongSeamlessLoop.ogg" type="AudioStream" id=2]
@@ -12,9 +12,6 @@
 [ext_resource path="res://Scenes/VictoryScreen.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/AmmoPowerUp.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/TimePowerUp.tscn" type="PackedScene" id=12]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 96.25, 370.5 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 4 )
@@ -59,10 +56,6 @@ autostart = true
 [node name="WinArea" type="Area2D" parent="."]
 collision_mask = 0
 script = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
-position = Vector2( 943.25, -940.5 )
-shape = SubResource( 1 )
 
 [node name="VictoryScreen" parent="." instance=ExtResource( 10 )]
 visible = false

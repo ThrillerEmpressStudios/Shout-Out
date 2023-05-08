@@ -16,6 +16,10 @@ boot_splash/show_image=false
 boot_splash/image="res://thriller_empress_splash.png"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/fullscreen=true
+
 [global]
 
 layer=false
