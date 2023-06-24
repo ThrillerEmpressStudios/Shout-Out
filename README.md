@@ -1,2 +1,2 @@
-# Shout-Out-Bullet-Hell-Jam
-An amazing game for an amazing BULLET HELL JAM
+# Shout Out Game
+Source code of an amazing game that our team is developing!
